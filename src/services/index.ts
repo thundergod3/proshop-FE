@@ -5,7 +5,7 @@ class HTTPMethod {
 
 	constructor() {
 		this.axios = axios;
-		this.axios.defaults.baseURL = "http://localhost:8080";
+		this.axios.defaults.baseURL = "https://proshop-app-fullstack.herokuapp.com";
 		this.axios.defaults.headers = { "Access-Control-Allow-Origin": "*", "Content-type": "application/json" };
 	}
 
