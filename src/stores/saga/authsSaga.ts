@@ -65,18 +65,14 @@ function* signIn({ email, password }: any) {
 
 function* signUp({ name, email, password }: any) {
 	try {
-		try {
-			const { data }: AxiosResponse = yield call(AuthsService.signUp, { name, email, password });
-			yield put(authsAction.signUpSucceeded(data));
-			yield customLocal.saveToLocal("userData", data);
-			yield customLocal.saveToLocal("token", data.token);
-			yield put(utilsAction.loadedUI());
-			yield put(utilsAction.clearError());
-		} catch (error) {
-			yield call(generateErrorSaga, { error });
-		}
+		const { data }: AxiosResponse = yield call(AuthsService.signUp, { name, email, password });
+		yield put(authsAction.signUpSucceeded(data));
+		yield customLocal.saveToLocal("userData", data);
+		yield customLocal.saveToLocal("token", data.token);
+		yield put(utilsAction.loadedUI());
+		yield put(utilsAction.clearError());
 	} catch (error) {
-		console.log(error);
+		yield call(generateErrorSaga, { error });
 	}
 }
 
