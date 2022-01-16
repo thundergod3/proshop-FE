@@ -11,7 +11,6 @@ import SearchBox from "../../utils/SearchBox";
 const Header = (): JSX.Element => {
 	const {
 		authsReducer: { checkAuthentication, userData },
-		utilsReducer: { loading },
 	} = useSelector((state: RootReducerI) => state);
 	const dispatch = useDispatch();
 	const { signOutRequest } = authsAction;
